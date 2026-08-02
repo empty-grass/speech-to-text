@@ -3,19 +3,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title>Speech color changer</title>
+    <title>はなしてみよう</title>
 
+    <script src="kuroshiro.min.js"></script>
+    <script src="kuroshiro-analyzer-kuromoji.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <h1>はなしてみよう</h1>
 
-    <button id="start">はじめる</button>
-    <button id="stop">おわる</button>
+    <button id="start" class="start">はじめる</button>
+    <button id="stop" class="stop">おわる</button>
 
-    <p id="output" class="output"></p>
-
-    <script src="script.js"></script>
+    <p id="output" class="output">これはサンプルの文字列です</p>
+    <script src="script.js" defer></script>
   </body>
 </html>

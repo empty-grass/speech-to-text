@@ -1,3 +1,5 @@
+/** 音声認識処理 */
+
 // SpeechRecognition オブジェクトの取得
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -41,3 +43,10 @@ stopButton.onclick = () => {
   recognition.stop();
   output.innerText = result;
 };
+
+/** 漢字かな変換処理 */
+// async function fetchFurigana(target) {
+//   let kuroshiro = new Kuroshiro();
+//   await kuroshiro.init(new KuromojiAnalyzer({ dictPath: './dict' }));
+//   console.log(await kuroshiro.convert('初めまして', { to: "hiragana" }));
+// }

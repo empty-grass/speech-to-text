@@ -16,12 +16,33 @@ body {
     text-align: center;
 }
 
+h1 {
+    margin-top: 20%;
+}
+
+button {
+    height: 100px;
+    width: 30%;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+button.start {
+    background-color: #ff667d;
+}
+
+button.stop {
+    background-color: #34a6fe;
+}
+
 .output {
     height: 100px;
-    margin-top: 10px;
+    margin-top: 20px;
     overflow: auto;
     background-color: lightgrey;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
 }
