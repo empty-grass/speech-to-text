@@ -31,22 +31,26 @@ recognition.onerror = (event) => {
   console.log(event);
 };
 
-recognition.onend = (event) => {
+recognition.onend = async (event) => {
   console.log('音声認識が停止しました。');
+  console.log(result);
+  output.innerText = await fetchFurigana(result);
 };
 
-startButton.onclick = async () => {
-  // recognition.start();
-  console.log(await fetchFurigana('フロントからの文章です'));
+startButton.onclick = () => {
+  recognition.start();
 };
 
 stopButton.onclick = () => {
   recognition.stop();
-  output.innerText = result;
 };
 
 /** 漢字かな変換処理 */
 async function fetchFurigana(target) {
+  if (!target) {
+    return 'もう一度';
+  }
+
   const URL = "https://bfyczjwxz5ibu2ra4a2cpk6bq40tiays.lambda-url.ap-northeast-1.on.aws/";
   const headers = {
     "Content-Type": "application/json"
@@ -66,7 +70,7 @@ async function fetchFurigana(target) {
       throw new Error(response.error);
     }
     const body = await response.json();
-    return body;
+    return body.result;
   } catch (error) {
     throw new Error(error);
   }
