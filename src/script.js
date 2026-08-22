@@ -35,8 +35,9 @@ recognition.onend = (event) => {
   console.log('音声認識が停止しました。');
 };
 
-startButton.onclick = () => {
-  recognition.start();
+startButton.onclick = async () => {
+  // recognition.start();
+  console.log(await fetchFurigana('フロントからの文章です'));
 };
 
 stopButton.onclick = () => {
@@ -45,8 +46,28 @@ stopButton.onclick = () => {
 };
 
 /** 漢字かな変換処理 */
-// async function fetchFurigana(target) {
-//   let kuroshiro = new Kuroshiro();
-//   await kuroshiro.init(new KuromojiAnalyzer({ dictPath: './dict' }));
-//   console.log(await kuroshiro.convert('初めまして', { to: "hiragana" }));
-// }
+async function fetchFurigana(target) {
+  const URL = "https://bfyczjwxz5ibu2ra4a2cpk6bq40tiays.lambda-url.ap-northeast-1.on.aws/";
+  const headers = {
+    "Content-Type": "application/json"
+  };
+  const params = {
+    "query": target,
+    "grade": 1
+  };
+
+  try {
+    const response = await fetch(URL, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(params)
+    });
+    if (!response.ok) {
+      throw new Error(response.error);
+    }
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
