@@ -20,7 +20,7 @@ export const handler = async (event) => {
   }
 
   // ルビ振りAPIへのリクエスト
-  const APPID = "dmVyPTIwMjUwNyZpZD01UmpMRVFBR2U1Jmhhc2g9WXpBek16Vm1ZVE15T0dFMU5XUTVZdw";
+  const APPID = "XXX"; // CLIENT ID
   const URL = "https://jlp.yahooapis.jp/jsonrpc";
   const headers = {
     "Content-Type": "application/json",
