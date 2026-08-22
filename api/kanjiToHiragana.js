@@ -20,25 +20,25 @@ export const handler = async (event) => {
   }
 
   // ルビ振りAPIへのリクエスト
-  const APPID = "XXX"; // CLIENT ID
-  const URL = "https://jlp.yahooapis.jp/jsonrpc";
+  const APPID = 'XXX'; // CLIENT ID
+  const URL = 'https://jlp.yahooapis.jp/jsonrpc';
   const headers = {
-    "Content-Type": "application/json",
-    "User-Agent": `Yahoo AppID: ${APPID}`
+    'Content-Type': 'application/json',
+    'User-Agent': `Yahoo AppID: ${APPID}`
   };
   const paramDic = {
-    "id": "1234-1",
-    "jsonrpc": "2.0",
-    "method": "jlp.furiganaservice.furigana",
-    "params": {
-      "q": params.query,
-      "grade": params.grade
+    id: '1234-1',
+    jsonrpc: '2.0',
+    method: 'jlp.furiganaservice.furigana',
+    params: {
+      q: params.query,
+      grade: params.grade
     }
   };
 
   try {
     const response = await fetch(URL, {
-      method: "POST",
+      method: 'POST',
       headers: headers,
       body: JSON.stringify(paramDic)
     });
@@ -48,13 +48,15 @@ export const handler = async (event) => {
     const body = await response.json();
 
     // レスポンス用テキストへ変換
-    let result = '';
+    let formatedText = '';
     body.result.word.forEach(element => {
-      if (element.furigana) result = result + element.furigana;
-      else result = result + element.surface;
+      if (element.furigana) formatedText = formatedText + element.furigana;
+      else formatedText = formatedText + element.surface;
     });
 
-    return result;
+    return {
+      result: formatedText
+    };
   } catch (e) {
     return responseError(e, 500, '外部APIリクエスト処理にてエラーが発生しました。');
   }
