@@ -4,12 +4,12 @@
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
-// 日本語の設定
+// 音声認識設定
 recognition.lang = 'ja-JP';
-recognition.interimResults = false; // 認識途中の結果も取得する
-recognition.continuous = true; // 継続して認識する
+recognition.interimResults = false;
+recognition.continuous = true;
 
-let result = "";
+let query = "";
 let startButton = document.getElementById('start');
 let stopButton = document.getElementById('stop');
 let mic = document.getElementById('mic');
@@ -19,14 +19,14 @@ let output = document.getElementById('output');
 
 recognition.onstart = () => {
   console.log('音声認識を開始しました。');
-  result = "";
+  query = "";
   output.innerText = "";
 };
 
 recognition.onresult = (event) => {
   const transcript = event.results[event.results.length - 1][0].transcript;
   console.log('認識結果: ', transcript);
-  result += transcript;
+  query += transcript;
 };
 
 recognition.onerror = (event) => {
@@ -38,10 +38,11 @@ recognition.onend = async (event) => {
   console.log('音声認識が停止しました。');
   mic.style.display = 'none';
   wait.style.display = 'flex';
-  console.log(result);
-  let re = await fetchFurigana(result);
-  if (re) {
-    output.innerHTML = re;
+  let grade = parseInt(document.querySelector('input[name="grade"]:checked')?.value);
+  console.log(query, grade);
+  let result = await fetchFurigana(query, grade);
+  if (result) {
+    output.innerHTML = result;
   } else {
     error.style.display = 'flex';
   }
@@ -63,8 +64,8 @@ stopButton.onclick = () => {
 };
 
 /** 漢字かな変換処理 */
-async function fetchFurigana(target) {
-  if (!target) {
+async function fetchFurigana(query, grade = 2) {
+  if (!query) {
     return '';
   }
 
@@ -73,8 +74,8 @@ async function fetchFurigana(target) {
     "Content-Type": "application/json"
   };
   const params = {
-    "query": target,
-    "grade": 1
+    "query": query,
+    "grade": grade
   };
 
   try {

@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -11,10 +11,22 @@
   <body>
     <h1>はなしてみよう</h1>
 
-    <button id="start" class="start">はじめる</button>
-    <button id="stop" class="stop" disabled>おわる</button>
+    <div class="grade-area">
+      <span>がくねん：</span>
+      <input type="radio" id="grade1" name="grade" value="2" checked/><label for="grade1">1</label>
+      <input type="radio" id="grade2" name="grade" value="3"/><label for="grade2">2</label>
+      <input type="radio" id="grade3" name="grade" value="4"/><label for="grade3">3</label>
+      <input type="radio" id="grade4" name="grade" value="5"/><label for="grade4">4</label>
+      <input type="radio" id="grade5" name="grade" value="6"/><label for="grade5">5</label>
+      <input type="radio" id="grade6" name="grade" value="7"/><label for="grade6">6</label>
+    </div>
 
-    <p id="output" class="output">ここにけっかがでるよ！</p>
+    <div class="action-area">
+      <button id="start" class="action-btn start">はじめる</button>
+      <button id="stop" class="action-btn stop" disabled>おわる</button>
+    </div>
+
+    <p id="output" class="output"></p>
     <p id="mic" class="annotation"><img src="img/mic.svg" class="icon">ききとりちゅう...</p>
     <p id="wait" class="annotation"><img src="img/wait.svg" class="icon">かいせきちゅう...</p>
     <p id="error" class="annotation"><img src="img/error.svg" class="icon">うまくききとれませんでした。もういちど！</p>

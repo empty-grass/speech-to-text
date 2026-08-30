@@ -9,8 +9,9 @@ html {
 
 body {
     height: inherit;
-    overflow: hidden;
+    overflow: scroll;
     max-width: 80%;
+    min-width: 375px;
     margin: 0 auto;
     font-family: system-ui;
     text-align: center;
@@ -20,9 +21,72 @@ h1 {
     margin-top: 20%;
 }
 
-button {
+.grade-area {
+    margin-top: 50px;
+}
+
+label {
+    display: inline-flex;
+    height: 70px;
+    width: 70px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: gray;
+}
+
+@media (max-width: 767px) {
+    label {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+input[type='radio']:checked + label[for='grade1'] {
+    background-color: #FFC1C1;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade2'] {
+    background-color: #FFC8A2;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade3'] {
+    background-color: #D3BCE8;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade4'] {
+    background-color: #A5BFE8;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade5'] {
+    background-color: #B5E4D5;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade6'] {
+    background-color: #FFF4B3;
+    color: black;
+}
+
+.action-area {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.action-btn {
     height: 100px;
-    width: 40%;
+    width: 45%;
+    border: none;
     border-radius: 20px;
     color: white;
     font-size: 24px;
@@ -50,6 +114,7 @@ button[disabled] {
     height: 100px;
     margin-top: 20px;
     overflow: auto;
+    border-radius: 20px;
     background-color: lightgrey;
     display: flex;
     justify-content: center;
