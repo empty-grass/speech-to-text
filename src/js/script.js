@@ -47,16 +47,16 @@ recognition.onend = async (event) => {
     error.style.display = 'flex';
   }
   wait.style.display = 'none';
-  startButton.removeAttribute('disabled');
-  stopButton.setAttribute('disabled', '');
+  startButton.toggleAttribute('disabled');
+  stopButton.toggleAttribute('disabled');
 };
 
 startButton.onclick = () => {
-  startButton.setAttribute('disabled', '');
+  startButton.toggleAttribute('disabled');
   mic.style.display = 'flex';
   error.style.display = 'none';
   recognition.start();
-  stopButton.removeAttribute('disabled');
+  stopButton.toggleAttribute('disabled');
 };
 
 stopButton.onclick = () => {
@@ -92,4 +92,11 @@ async function fetchFurigana(query, grade = 2) {
   } catch (error) {
     throw new Error(error);
   }
+}
+
+/** レイアウトの縦/横変更処理 */
+let changeLayoutButton = document.getElementById('change-layout');
+changeLayoutButton.onclick = () => {
+  document.getElementById('lh').toggleAttribute('disabled');
+  document.getElementById('lv').toggleAttribute('disabled');
 }

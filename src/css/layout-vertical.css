@@ -1,0 +1,139 @@
+/* 縦書きのスタイル */
+
+body,
+html {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+body {
+    height: inherit;
+    overflow: scroll;
+    max-width: 80%;
+    min-width: 375px;
+    margin: 0 auto;
+    font-family: system-ui;
+    text-align: center;
+}
+
+h1 {
+    margin-right: 5%;
+}
+
+.change-layout-area {
+    margin-right: 30px;
+}
+
+.grade-area {
+    margin-right: 30px;
+}
+
+label {
+    display: inline-flex;
+    height: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: gray;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+input[type='radio']:checked + label[for='grade1'] {
+    background-color: #FFC1C1;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade2'] {
+    background-color: #FFC8A2;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade3'] {
+    background-color: #D3BCE8;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade4'] {
+    background-color: #A5BFE8;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade5'] {
+    background-color: #B5E4D5;
+    color: black;
+}
+
+input[type='radio']:checked + label[for='grade6'] {
+    background-color: #FFF4B3;
+    color: black;
+}
+
+.action-area {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.action-btn {
+    height: 45%;
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+button.change {
+    height: 45%;
+    width: 60px;
+    background-color: #00ced1;
+}
+
+button.start {
+    background-color: #ff667d;
+}
+
+button.stop {
+    background-color: #34a6fe;
+}
+
+button[disabled] {
+    background-color: gray;
+}
+
+.annotation {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.output {
+    height: 92%;
+    width: 100px;
+    margin-top: 4%;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.horizontal-text {
+    display: inline;
+}
+
+.vertical-text {
+    display: none;
+}

@@ -5,11 +5,19 @@
 
     <title>はなしてみよう</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <link id="lh" rel="stylesheet" href="css/layout-horizontal.css" />
+    <link id="lv" rel="stylesheet" href="css/layout-vertical.css" disabled />
   </head>
 
   <body>
     <h1>はなしてみよう</h1>
+
+    <div class="hange-layout-area">
+      <span>もじのむき：</span>
+      <button id="change-layout" class="action-btn change">
+        <span class="vertical-text">たて</span><span class="horizontal-text">よこ</span>がきにする
+      </button>
+    </div>
 
     <div class="grade-area">
       <span>がくねん：</span>
@@ -30,6 +38,6 @@
     <p id="mic" class="annotation"><img src="img/mic.svg" class="icon">ききとりちゅう...</p>
     <p id="wait" class="annotation"><img src="img/wait.svg" class="icon">かいせきちゅう...</p>
     <p id="error" class="annotation"><img src="img/error.svg" class="icon">うまくききとれませんでした。もういちど！</p>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
